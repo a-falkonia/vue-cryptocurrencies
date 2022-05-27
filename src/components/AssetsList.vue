@@ -1,7 +1,7 @@
 <template>
     <div>
         <AssetsItem 
-        v-for="currency of wallet_currencies"
+        v-for="currency of portfolio_currencies"
         v-bind:currency="currency"
         @subtract-currency="subtractCurrency"
         @add-currency="addCurrency"/>
@@ -14,13 +14,13 @@ export default {
         AssetsItem
     },
     props: {
-        wallet_currencies: {
+        portfolio_currencies: {
             type: Array,
             required: true
         },
     },
     methods: {
-        subtractCurrency(currencyName) {
+        subtractCurrency(currencyName) {       
             this.$emit('subtract-currency', currencyName)
         },
         addCurrency(currencyName) {

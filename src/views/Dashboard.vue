@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Dashboard</h2>
-    <router-link to="/my-wallet">My Wallet</router-link>
+    <router-link to="/my-portfolio">My Portfolio</router-link>
     <hr />
     <Converter v-bind:coinsData="coinsData" />
     <List v-bind:coinsData="coinsData" />

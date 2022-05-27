@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Dashboard from '@/views/Dashboard'
-import Wallet from '@/views/Wallet'
+import Portfolio from '@/views/Portfolio'
 
 const history = createWebHistory();
 const router = createRouter({
@@ -11,8 +11,8 @@ const router = createRouter({
       component: Dashboard
     },
     {
-      path: "/my-wallet",
-      component: Wallet
+      path: "/my-portfolio",
+      component: Portfolio
     },
   ],
 });

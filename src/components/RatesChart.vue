@@ -1,6 +1,6 @@
 <template>
   <div class="chart-container">
-    <LineChart :chartData="testData" />
+    <LineChart :chartData="data" />
   </div>
 </template>
 
@@ -38,8 +38,7 @@ export default {
       chart_dates.push(d);
     }
 
-    const testData = {
-      // labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+    const data = {
       labels: chart_dates,
       datasets: [
         {
@@ -54,7 +53,7 @@ export default {
         },
       ],
     };
-    return { testData };
+    return { data };
   },
   props: ["coins_id"],
 };
