@@ -17,7 +17,7 @@
             <template v-if="selected === coin.name" v-model="coinRate">
               <img class="coin-img" :src="coin.image.small" />
               <h2 class="coin-name">{{ coin.name }}</h2>
-              <p class="">Rate: {{ coin.market_data.current_price.usd }} $</p>
+              <p class="">Rate: {{ coin.market_data.current_price.usd }} $USD</p>
               <input
                 class="currency-input"
                 @keyup="calcInput_2"
@@ -30,14 +30,14 @@
         <div>
           <img class="usd-img" src="@/assets/dollar-symbol-50.png" />
           <h2 class="coin-name">USD</h2>
-          <p>Rate: 1 USD</p>
+          <p>Rate: 1 $USD</p>
           <input
             id="currencyInput"
             class="currency-input"
             @keyup="calcInput_1"
             :value="calc2"
           />
-          <span>$USD</span>
+          <span>usd</span>
         </div>
     </div>
   </div>

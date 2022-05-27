@@ -34,6 +34,6 @@ export default {
 table {
   background: lightgray;
   margin:auto;
-  width: 40%;
+  width: 30%
 }
 </style>
