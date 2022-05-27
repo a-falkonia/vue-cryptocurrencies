@@ -1,7 +1,7 @@
 <template>
-<div class="chart-container">
-  <LineChart :chartData="testData" />
-</div>
+  <div class="chart-container">
+    <LineChart :chartData="testData" />
+  </div>
 </template>
 
 <script>
@@ -32,26 +32,26 @@ export default {
       chart_prices[`${coin}`] = prices;
     }
 
-    for (const value of coinAPIdata.prices){
-        let [timestamp,] = value;
-        let d = new Date(timestamp).toLocaleDateString("ru-RU")
-        chart_dates.push(d)
+    for (const value of coinAPIdata.prices) {
+      let [timestamp] = value;
+      let d = new Date(timestamp).toLocaleDateString("ru-RU");
+      chart_dates.push(d);
     }
 
     const testData = {
-        // labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
-        labels: chart_dates,
-        datasets: [
-            {
-            data: chart_prices["bitcoin"],
-            label: "Bitcoin",
-            tension: 0.1
-            },
-            {
-            data: chart_prices["ethereum"],
-            label: "Ethereum",
-            tension: 0.1
-            },
+      // labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+      labels: chart_dates,
+      datasets: [
+        {
+          data: chart_prices["bitcoin"],
+          label: "Bitcoin",
+          tension: 0.1,
+        },
+        {
+          data: chart_prices["ethereum"],
+          label: "Ethereum",
+          tension: 0.1,
+        },
       ],
     };
     return { testData };
@@ -62,7 +62,7 @@ export default {
 
 <style>
 .chart-container {
-    width: 50%;
-    margin: auto
+  width: 50%;
+  margin: auto;
 }
 </style>

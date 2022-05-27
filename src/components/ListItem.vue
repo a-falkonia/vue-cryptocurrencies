@@ -14,24 +14,24 @@
 <script>
 
 export default {
-    name: 'App',
-    props: {
-        coin: {
-            type: Object,
-            required: true
-        },
-        index: {
-            type: Number,
+  name: 'App',
+  props: {
+    coin: {
+      type: Object,
+      required: true
+    },
+    index: {
+      type: Number,
 
-        }
     }
+  }
 }
 </script>
 
 <style>
 tr {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

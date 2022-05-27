@@ -1,25 +1,25 @@
 <template>
   <div>
     <h2>Dashboard</h2>
-    <hr />
     <router-link to="/my-wallet">My Wallet</router-link>
+    <hr />
     <Converter v-bind:coinsData="coinsData" />
     <List v-bind:coinsData="coinsData" />
-    <Suspense><Chart v-bind:coins_id="coins_id"/></Suspense>
+    <Suspense><RatesChart v-bind:coins_id="coins_id"/></Suspense>
   </div>
 </template>
 
 <script>
 import List from "@/components/List";
 import Converter from "@/components/Converter";
-import Chart from "@/components/Chart";
+import RatesChart from "@/components/RatesChart";
 export default {
   name: "App",
   
   components: {
     Converter,
     List,
-    Chart,
+    RatesChart,
   },
   data() {
     return {
