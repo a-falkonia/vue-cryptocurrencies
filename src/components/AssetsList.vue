@@ -3,8 +3,7 @@
         <AssetsItem 
         v-for="currency of portfolio_currencies"
         v-bind:currency="currency"
-        @subtract-currency="subtractCurrency"
-        @add-currency="addCurrency"/>
+        @amount-changed="updateAmount"/>
     </div>
 </template>
 <script>
@@ -20,12 +19,9 @@ export default {
         },
     },
     methods: {
-        subtractCurrency(currencyName) {       
-            this.$emit('subtract-currency', currencyName)
+        updateAmount(currencyName) {       
+            this.$emit('update-amount', currencyName)
         },
-        addCurrency(currencyName) {
-            this.$emit('add-currency', currencyName)
-        }
     },
 
 }

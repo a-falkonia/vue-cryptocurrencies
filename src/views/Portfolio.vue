@@ -5,8 +5,8 @@
         <hr>
         <h3>Your Portfolio Value is: {{ portfolio_value }} $USD</h3>
         <h3>You currently have:</h3>
-        <AssetsList v-bind:portfolio_currencies="portfolio_currencies" @subtract-currency="subtractCurrency"
-            @add-currency="addCurrency" />
+        <AssetsList v-bind:portfolio_currencies="portfolio_currencies"
+            @update-amount="updateAmount" />
         <PortfolioChart :chart_data="chart_data" />
     </div>
 </template>
@@ -14,13 +14,6 @@
 <script>
 import AssetsList from '@/components/AssetsList'
 import PortfolioChart from '@/components/PortfolioChart'
-const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    animation: {
-        animateRotate: false
-    }
-}
 export default {
     components: {
         AssetsList,
@@ -30,22 +23,6 @@ export default {
         this.portfolio_value = await this.updatePortfolioValue()
     },
     methods: {
-        async subtractCurrency(currencyname) {
-            for (const c of this.portfolio_currencies) {
-                if (c.name === currencyname) {
-                    c.amount -= 1;
-                }
-                this.portfolio_value = await this.updatePortfolioValue()
-            }
-        },
-        async addCurrency(currencyname) {
-            for (const c of this.portfolio_currencies) {
-                if (c.name === currencyname) {
-                    c.amount += 1;
-                }
-                this.portfolio_value = await this.updatePortfolioValue()
-            }
-        },
         async updatePortfolioValue() {
             let portfolioValue = 0;
             let coinValues = [];
@@ -68,10 +45,12 @@ export default {
             this.chart_data = coinValues
             return portfolioValue
         },
+        async updateAmount(){
+            this.portfolio_value = await this.updatePortfolioValue()
+        }
     },
     data() {
         return {
-            options,
             portfolio_currencies: [
                 { name: "bitcoin", amount: 1 },
                 { name: "ethereum", amount: 3 },

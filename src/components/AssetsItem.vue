@@ -1,5 +1,5 @@
 <template>
-    <p><button class="rm" v-on:click="$emit('subtract-currency', currency.name)">-1</button>{{ currency.amount }} {{ currency.name }}<button class="add" v-on:click="$emit('add-currency', currency.name)">+1</button></p>
+    <p>{{ currency.amount }} {{currency.name}} <input v-model.number="currency.amount" @change="$emit('amount-changed')" type="number"></p>
 </template>
 <script>
 
