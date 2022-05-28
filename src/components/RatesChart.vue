@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import { LineChart } from "vue-chart-3";
-import { Chart, registerables } from "chart.js";
+import { LineChart } from 'vue-chart-3';
+import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
 

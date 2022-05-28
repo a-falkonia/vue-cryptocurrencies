@@ -1,44 +1,51 @@
 <template>
-    <DoughnutChart :chartData="data" />
+  <div>
+    <DoughnutChart ref="doughnutRef" :chartData="testData" :options="options" />
+  </div>
 </template>
 
 <script>
-import { DoughnutChart } from "vue-chart-3";
-import { Chart, registerables } from "chart.js";
+import { computed, defineComponent, ref } from 'vue';
+import { DoughnutChart } from 'vue-chart-3';
+import { toRef } from 'vue'
 
-Chart.register(...registerables);
+export default defineComponent({
+  name: 'App',
+  components: { DoughnutChart },
+  setup(props) {
+    const data = toRef(props, 'chart_data');
+    const doughnutRef = ref();
 
-export default {
-    name: "App",
-    components: { DoughnutChart },
+    const options = ref({
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Portfolio Chart'
+        },
+      },
+    });
 
-    async setup(props) {
-        let chart_labels = []
-        let chart_data = []
-        for (let coin of props.portfolio) {
-            chart_labels.push(coin.name)
-            chart_data.push(coin.amount)
-        }
-        const data = {
-            labels: chart_labels,
-            datasets: [{
-                label: 'My First Dataset',
-                data: chart_data,
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
-                ],
-                hoverOffset: 4
-            }]
-        };
-        return { data };
-    },
-    props: {
-        portfolio: {
-            type: Object,
-            required: true
-        }
+    const testData = computed(() => ({
+      labels: ["ethereum", "bitcoin", "usd"],
+      datasets: [
+        {
+          data: data.value,
+          backgroundColor: ['#77CEFF', '#0079AF', '#123E6B'],
+        },
+      ],
+    }));
+
+    return { testData, doughnutRef, options };
+  },
+  props : {
+    chart_data : {
+      type: Array,
+      required: true
     }
-};
+  }
+});
 </script>
