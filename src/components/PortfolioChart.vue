@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="">
     <DoughnutChart ref="doughnutRef" :chartData="testData" :options="options" />
   </div>
 </template>
@@ -21,21 +21,20 @@ export default defineComponent({
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          position: 'top',
+          position: 'bottom',
         },
         title: {
-          display: true,
-          text: 'Portfolio Chart'
+          display: false,
         },
       },
     });
 
     const testData = computed(() => ({
-      labels: ["ethereum", "bitcoin", "usd"],
+      labels: ["bitcoin","ethereum","usd"],
       datasets: [
         {
           data: data.value,
-          backgroundColor: ['#77CEFF', '#0079AF', '#123E6B'],
+          backgroundColor: ['#f8c470', '#123E6B', '#ebf2fa'],
         },
       ],
     }));

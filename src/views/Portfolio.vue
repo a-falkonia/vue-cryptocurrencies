@@ -1,17 +1,24 @@
 <template>
     <div class="container">
         <div class="row gy-3">
-        <div class="column-box col-lg-4">
-        <div class="border rounded">
-        <h3>Your Portfolio Value is: {{ portfolio_value }} $USD</h3>
-        <h3>You currently have:</h3>
-        <AssetsList v-bind:portfolio_currencies="portfolio_currencies"
-            @update-amount="updateAmount" />
-        </div>
-        </div>
-        <div class="column-box col-lg-8">
-        <PortfolioChart :chart_data="chart_data" />
-        </div>
+            <div class="column-box col-lg-4">
+                <div class="border rounded p-3">
+                    <h3>Portfolio Value: {{ portfolio_value }} $USD</h3>
+                    <AssetsList v-bind:portfolio_currencies="portfolio_currencies" @update-amount="updateAmount" />
+                    <!-- <p class="pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque distinctio
+                        inventore qui quidem nesciunt illo modi, ex repellat ipsa explicabo error dolorum nisi provident
+                        itaque minus odio ducimus blanditiis consequatur.
+                        Placeat, animi explicabo quia voluptas repellendus quidem exercitationem sunt quae sit ea quod
+                        sequi odit adipisci labore voluptatum delectus beatae ipsa consectetur earum! Suscipit ipsum est
+                        ut quo esse sequi?
+                        Deleniti consequatur placeat dolore, unde ullam impedit vel soluta ut iure explicabo ipsam
+                        perspiciatis! Veritatis, quo fugit a cum id ex magnam quibusdam in excepturi atque corrupti
+                        nobis, molestias officia.</p> -->
+                </div>
+            </div>
+            <div class="column-box col-lg-5">
+                <PortfolioChart :chart_data="chart_data" />
+            </div>
         </div>
     </div>
 </template>
@@ -51,16 +58,16 @@ export default {
             portfolioValue = portfolioValue.toFixed(2)
             return portfolioValue
         },
-        async updateAmount(){
+        async updateAmount() {
             this.portfolio_value = await this.updatePortfolioValue()
         }
     },
     data() {
         return {
             portfolio_currencies: [
-                { name: "bitcoin", amount: 1 },
-                { name: "ethereum", amount: 3 },
-                { name: "usd", amount: 160 }
+                { name: "bitcoin", amount: 0.1 },
+                { name: "ethereum", amount: 2 },
+                { name: "usd", amount: 1500 }
             ],
             portfolio_value: 0,
         }
