@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container dashboard-container">
     <div class="row gy-3">
       <div class="column-box col-lg-4">
         <div class="border rounded">
@@ -9,9 +9,9 @@
         </div>
       </div>
       <div class="column-box col-lg-8">
-        <div class="border rounded">
+        <div class="">
           <Suspense>
-            <RatesChart v-bind:coins_id="coins_id" />
+            <RatesChart :key="selectedCoin" v-bind:selectedCoin="selectedCoin" />
           </Suspense>
         </div>
       </div>
@@ -65,5 +65,8 @@ export default {
 <style>
 .column-box {
   padding: 16px;
+}
+.dashboard-container{
+  min-height: 100%;
 }
 </style>

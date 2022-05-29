@@ -20,7 +20,7 @@
         </template>
       </div>
       <div class="">
-        <img src="@/assets/dollar-symbol.png" class="me-3" width="36" height="36" />
+        <img src="@/assets/dollar-sign.png" class="me-3" width="36" height="36" />
         <h2>USD</h2>
         <p>Rate: $1</p>
         <div>

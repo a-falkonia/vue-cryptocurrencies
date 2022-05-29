@@ -1,5 +1,5 @@
 <template>
-<div class="px-3 pt-3">
+<div class="desciption-box px-3 pt-3">
     <p v-html="description"></p>
 </div>
 </template>
@@ -26,3 +26,8 @@ export default{
     }
 }
 </script>
+<style scoped>
+.description-box{
+    
+}
+</style>

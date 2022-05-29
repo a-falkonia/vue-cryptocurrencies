@@ -18,7 +18,7 @@ export default defineComponent({
 
     const options = ref({
       responsive: true,
-    maintainAspectRatio: false,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: 'top',

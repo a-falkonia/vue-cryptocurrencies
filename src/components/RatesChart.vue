@@ -1,6 +1,6 @@
 <template>
   <div class="chart-container">
-    <LineChart :chartData="data" />
+    <LineChart :height="640" :chartData="data" :options="options" />
   </div>
 </template>
 
@@ -17,44 +17,104 @@ export default {
   async setup(props) {
     var chart_prices = [];
     var chart_dates = [];
-    var coinAPIdata;
+
     // Fetching the chart data for each coin
-    for (const coin of props.coins_id) {
-      const response = await fetch(
-        `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=14&interval=daily`
-      );
-      coinAPIdata = await response.json();
-      let prices = [];
-      for (const value of coinAPIdata.prices) {
-        let [, price] = value;
-        prices.push(price);
-      }
-      chart_prices[`${coin}`] = prices;
+    const response = await fetch(
+      `https://api.coingecko.com/api/v3/coins/${props.selectedCoin}/market_chart?vs_currency=usd&days=14&interval=hourly`
+    );
+    const coinAPIdata = await response.json();
+    let timestamps = []
+    for (const value of coinAPIdata.prices) {
+      let [timestamp, price] = value;
+      chart_prices.push(price);
+      timestamps.push(timestamp);
     }
 
-    for (const value of coinAPIdata.prices) {
-      let [timestamp] = value;
-      let d = new Date(timestamp).toLocaleDateString("ru-RU");
-      chart_dates.push(d);
+    var months_arr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    for (const timestamp of timestamps) {
+      let d = new Date(timestamp)
+      let date = d.getDate() + ' ' + (months_arr[d.getMonth()])
+      chart_dates.push(date);
     }
 
     const data = {
       labels: chart_dates,
       datasets: [
         {
-          data: chart_prices["bitcoin"],
-          label: "Bitcoin",
+          data: chart_prices,
+          label: "Rate",
           tension: 0.1,
-        },
-        {
-          data: chart_prices["ethereum"],
-          label: "Ethereum",
-          tension: 0.1,
+          borderWidth: 1,
+          borderColor: 'rgb(13,110,253)'
         },
       ],
     };
-    return { data };
+    const options = {
+      maintainAspectRatio: false,
+      responsive: true,
+      elements: {
+        point: {
+          radius: 0
+        }
+      },
+      scales: {
+        x: {
+          grid: {
+            display: false,
+            borderColor: 'rgba(255,255,255, 0.1)'
+          },
+          ticks: {
+            display: true,
+            color: 'rgba(0,0,0,0.3)',
+            callback: function (val, index) {
+              return index % 4 === 0 ? this.getLabelForValue(val) : '';
+            },
+
+          }
+        },
+        y: {
+          grid: {
+            display: true,
+            color: 'rgba(0,0,0,0.1)',
+            borderColor: 'rgb(255,255,255)',
+          },
+          ticks: {
+            display: true,
+            color: 'rgba(0,0,0,0.3)',
+
+          },
+
+        },
+      },
+      plugins: {
+        legend: {
+          display: false,
+        },
+        title: {
+          display: true,
+          text: '',
+          font: {
+            color: 'rgb(0, 18, 58)',
+            size: 16
+          },
+        }
+      }
+    };
+
+    return { data, options };
   },
-  props: ["coins_id"],
+
+  props: {
+    selectedCoin: {
+      type: String,
+      required: true
+    }
+  },
 };
 </script>
+<style scoped>
+.chart-container {
+  margin-top: -30px;
+  height: 560px;
+}
+</style>
