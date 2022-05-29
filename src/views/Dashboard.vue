@@ -3,12 +3,10 @@
     <div class="row gy-3">
       <div class="column-box col-lg-4">
         <div class="border rounded">
-          <Converter v-bind:coinsData="coinsData" />
-          <div class="px-3 pt-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ab, veniam rerum, ipsa quas rem incidunt debitis, mollitia accusamus tempore quia. Sint mollitia nostrum minima cum. Ipsum sit aliquam corrupti.
-          </div>
+          <Converter v-bind:coinsData="coinsData" @selected-currency="updateSelectedCoin" />
+          <Description :key="selectedCoin" v-bind:selectedCoin="selectedCoin"/>
           <List v-bind:coinsData="coinsData" />
-           </div>
+        </div>
       </div>
       <div class="column-box col-lg-8">
         <div class="border rounded">
@@ -16,13 +14,14 @@
             <RatesChart v-bind:coins_id="coins_id" />
           </Suspense>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import List from "@/components/List";
+import Description from '@/components/Description';
 import Converter from "@/components/Converter";
 import RatesChart from "@/components/RatesChart";
 export default {
@@ -30,6 +29,7 @@ export default {
 
   components: {
     Converter,
+    Description,
     List,
     RatesChart,
   },
@@ -37,6 +37,7 @@ export default {
     return {
       coins_id: ["bitcoin", "ethereum"],
       coinsData: [],
+      selectedCoin:"bitcoin"
     };
   },
   async mounted() {
@@ -48,6 +49,17 @@ export default {
       this.coinsData.push(coinData);
     }
   },
+  methods: {
+    updateSelectedCoin(currencyName) {
+      for (const coin of this.coinsData) {
+        if (coin.name == currencyName) {
+          this.selectedCoin = coin.name.toLowerCase()
+          console.log("Dashboard selected coin", this.selectedCoin)
+        
+        }
+      }
+    }
+  }
 };
 </script>
 <style>

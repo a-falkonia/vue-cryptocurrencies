@@ -63,7 +63,6 @@ export default {
                 { name: "usd", amount: 160 }
             ],
             portfolio_value: 0,
-            chart_data: [10, 20, 30]
         }
     },
 }
