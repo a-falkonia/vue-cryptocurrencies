@@ -1,23 +1,19 @@
 <template>
+  <header-block />
   <router-view />
 </template>
 
 <script>
+import HeaderBlock from '@/components/Header'
 
 export default {
   name: 'App',
   components: {
+    HeaderBlock
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './assets/css/styles.min.css';
 </style>

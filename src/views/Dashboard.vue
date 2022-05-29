@@ -1,11 +1,23 @@
 <template>
-  <div>
-    <h2>Dashboard</h2>
-    <router-link to="/my-portfolio">My Portfolio</router-link>
-    <hr />
-    <Converter v-bind:coinsData="coinsData" />
-    <List v-bind:coinsData="coinsData" />
-    <Suspense><RatesChart v-bind:coins_id="coins_id"/></Suspense>
+  <div class="container">
+    <div class="row gy-3">
+      <div class="column-box col-lg-4">
+        <div class="border rounded">
+          <Converter v-bind:coinsData="coinsData" />
+          <div class="px-3 pt-3">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ab, veniam rerum, ipsa quas rem incidunt debitis, mollitia accusamus tempore quia. Sint mollitia nostrum minima cum. Ipsum sit aliquam corrupti.
+          </div>
+          <List v-bind:coinsData="coinsData" />
+           </div>
+      </div>
+      <div class="column-box col-lg-8">
+        <div class="border rounded">
+          <Suspense>
+            <RatesChart v-bind:coins_id="coins_id" />
+          </Suspense>
+        </div>
+    </div>
+    </div>
   </div>
 </template>
 
@@ -15,7 +27,7 @@ import Converter from "@/components/Converter";
 import RatesChart from "@/components/RatesChart";
 export default {
   name: "App",
-  
+
   components: {
     Converter,
     List,
@@ -38,3 +50,8 @@ export default {
   },
 };
 </script>
+<style>
+.column-box {
+  padding: 16px;
+}
+</style>

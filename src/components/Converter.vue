@@ -1,34 +1,32 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div>
-        <h2 class="title">CryptoCurrency Converter</h2>
-      </div>
-      <div>
-        <select class="select-coin" @change="updateInputs" v-model="selected">
-          <option v-for="coin in coinsData">{{ coin.name }}</option>
-        </select>
-      </div>
+  <div class="px-3 pt-3">
+    <div class="pb-3">
+    <select class="select-coin" @change="updateInputs" v-model="selected">
+      <option v-for="coin in coinsData">{{ coin.name }}</option>
+    </select>
     </div>
-    <div class="converter-box">
-      <!-- input field cryptocurrency -->
-      <div>
+    <div class="d-flex flex-row">
+      <div class="">
         <template v-for="coin in coinsData">
-          <template v-if="selected === coin.name" v-model="coinRate">
-            <img class="coin-img" :src="coin.image.small" />
-            <h2 class="coin-name">{{ coin.name }}</h2>
-            <p class="">Rate: {{ coin.market_data.current_price.usd }} $USD</p>
-            <input class="currency-input" @keyup="calcInput_2" :value="calc1" /><span>{{ coin.symbol }}</span>
+          <template v-if="selected === coin.name" v-model="selected">
+            <img :src="coin.image.small" class="me-3" width="36" height="36" />
+            <h2>{{ coin.name }}</h2>
+            <p>Rate: ${{ coin.market_data.current_price.usd }}</p>
+          <div>
+              <input class="converter-input" id="currencyInput" @keyup="calc_usd" :value="currency_input" />
+              <span>{{ coin.symbol }}</span>
+            </div>
           </template>
         </template>
       </div>
-      <!-- input field USD -->
-      <div>
-        <img class="usd-img" src="@/assets/dollar-symbol-50.png" />
-        <h2 class="coin-name">USD</h2>
-        <p>Rate: 1 $USD</p>
-        <input id="currencyInput" class="currency-input" @keyup="calcInput_1" :value="calc2" />
-        <span>usd</span>
+      <div class="">
+        <img src="@/assets/dollar-symbol.png" class="me-3" width="36" height="36" />
+        <h2>USD</h2>
+        <p>Rate: $1</p>
+          <div>
+          <input class="converter-input" id="currencyInput" @keyup="calc_currency" :value="usd_input" />
+          <span>usd</span>
+        </div>
       </div>
     </div>
   </div>
@@ -40,51 +38,50 @@ export default {
   data() {
     return {
       selected: "Bitcoin",
-      calc1: "",
-      calc2: "",
-      firstInputSelected: true,
-      input: document.getElementById("currencyInput"),
+      selectedCoinRate: 0,
+      currency_input: "",
+      usd_input: "",
+      currencyInputSelected: true,
     }
   },
   methods: {
-    calcInput_1: function (e, rate) {
-      this.firstInputSelected = true;
-      this.calculate(e, rate);
+    calc_usd: function (e) {
+      this.currencyInputSelected = true;
+      this.calculate(e)
     },
-    calcInput_2: function (e, rate) {
-      this.firstInputSelected = false;
-      this.calculate(e, rate);
+    calc_currency: function (e) {
+      this.currencyInputSelected = false;
+      this.calculate(e)
     },
     updateInputs: function () {
-      var selected;
+      this.usd_input = "";
+			this.currency_input = "";
+      var selected
+      if (this.selectedCoinRate == 0){
+        this.selectedCoinRate = this.coinsData[0].market_data.current_price.usd
+      }
       for (var i = 0; i < this.coinsData.length; i++) {
         if (this.selected == this.coinsData[i].name) {
           selected = this.coinsData[i];
+          this.selectedCoinRate = selected.market_data.current_price.usd;
         }
       }
-
-      var input2 = parseFloat(document.getElementById("currencyInput").value);
-      if (isNaN(input2)) {
-        this.calc2 = "";
-        this.calc1 = "";
-        return;
-      }
-      this.calc1 = (input2 * this.coinRate).toFixed(2);
+      
     },
-    calculate: function (e, value) {
+    calculate: function (e) {
+      this.updateInputs();
       var value = parseFloat(e.target.value);
-      if (isNaN(value)) {
-        this.calc2 = "";
-        this.calc1 = "";
-        return;
-      }
-
-      if (this.firstInputSelected) {
-        this.calc2 = value;
-        this.calc1 = (value / this.coinsData[0].market_data.current_price.usd).toFixed(2);
+      if(isNaN(value)){
+				this.usd_input = "";
+				this.currency_input = "";
+				return;
+			}
+      if (this.currencyInputSelected){
+        this.currency_input = value
+        this.usd_input = (value*this.selectedCoinRate).toFixed(2)
       } else {
-        this.calc1 = value;
-        this.calc2 = (value * this.coinsData[0].market_data.current_price.usd).toFixed(2);
+        this.usd_input = value
+        this.currency_input = (value / this.selectedCoinRate).toFixed(2)
       }
     }
   }
@@ -92,9 +89,12 @@ export default {
 </script>
 
 <style scoped>
-.converter-box {
-  display: flex;
-  justify-content: center;
-  border: 1px;
+.converter-input{
+	width: 70%;
+	margin-right: 5px;
+	height: 40px;
+	border-radius: 5px;
+	border: 1px solid #CCC;
+	padding-left: 10px;
 }
 </style>

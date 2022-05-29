@@ -1,14 +1,7 @@
 <template>
-  <table>
-    <thead>
-      <tr>
-        <th v-for="title in titles" :key="title">{{ title }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ListItem v-for="(coin, index) in coinsData" v-bind:coin="coin" v-bind:index="index" />
-    </tbody>
-  </table>
+<div class="list-group list-group-flush">
+    <ListItem v-for="(coin, index) in coinsData" v-bind:coin="coin" v-bind:index="index" />
+</div>
 </template>
 
 <script>
@@ -26,10 +19,3 @@ export default {
   props: ['coinsData']
 }
 </script>
-<style scoped>
-table {
-  background: lightgray;
-  margin: auto;
-  width: 30%
-}
-</style>

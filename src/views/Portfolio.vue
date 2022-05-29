@@ -1,13 +1,18 @@
 <template>
-    <div>
-        <h2>My Portfolio</h2>
-        <router-link to="/">Dashboard</router-link>
-        <hr>
+    <div class="container">
+        <div class="row gy-3">
+        <div class="column-box col-lg-4">
+        <div class="border rounded">
         <h3>Your Portfolio Value is: {{ portfolio_value }} $USD</h3>
         <h3>You currently have:</h3>
         <AssetsList v-bind:portfolio_currencies="portfolio_currencies"
             @update-amount="updateAmount" />
+        </div>
+        </div>
+        <div class="column-box col-lg-8">
         <PortfolioChart :chart_data="chart_data" />
+        </div>
+        </div>
     </div>
 </template>
 
@@ -43,6 +48,7 @@ export default {
                 }
             }
             this.chart_data = coinValues
+            portfolioValue = portfolioValue.toFixed(2)
             return portfolioValue
         },
         async updateAmount(){

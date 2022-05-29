@@ -58,10 +58,3 @@ export default {
   props: ["coins_id"],
 };
 </script>
-
-<style>
-.chart-container {
-  width: 50%;
-  margin: auto;
-}
-</style>
