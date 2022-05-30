@@ -5,15 +5,6 @@
                 <div class="border rounded p-3">
                     <h3>Portfolio Value: {{ portfolio_value }} $USD</h3>
                     <AssetsList v-bind:portfolio_currencies="portfolio_currencies" @update-amount="updateAmount" />
-                    <!-- <p class="pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque distinctio
-                        inventore qui quidem nesciunt illo modi, ex repellat ipsa explicabo error dolorum nisi provident
-                        itaque minus odio ducimus blanditiis consequatur.
-                        Placeat, animi explicabo quia voluptas repellendus quidem exercitationem sunt quae sit ea quod
-                        sequi odit adipisci labore voluptatum delectus beatae ipsa consectetur earum! Suscipit ipsum est
-                        ut quo esse sequi?
-                        Deleniti consequatur placeat dolore, unde ullam impedit vel soluta ut iure explicabo ipsam
-                        perspiciatis! Veritatis, quo fugit a cum id ex magnam quibusdam in excepturi atque corrupti
-                        nobis, molestias officia.</p> -->
                 </div>
             </div>
             <div class="column-box col-lg-5">

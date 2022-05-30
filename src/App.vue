@@ -15,5 +15,5 @@ export default {
 </script>
 
 <style>
-@import './assets/css/styles.min.css';
+@import '@/assets/css/syles.css';
 </style>

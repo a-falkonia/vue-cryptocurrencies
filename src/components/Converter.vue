@@ -20,7 +20,7 @@
         </template>
       </div>
       <div class="">
-        <img src="@/assets/dollar-sign.png" class="me-3" width="36" height="36" />
+        <img src="@/assets/images/dollar-sign.png" class="me-3" width="36" height="36" />
         <h2>USD</h2>
         <p>Rate: $1</p>
         <div>
@@ -88,14 +88,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.converter-input {
-  width: 70%;
-  margin-right: 5px;
-  height: 40px;
-  border-radius: 5px;
-  border: 1px solid #CCC;
-  padding-left: 10px;
-}
-</style>

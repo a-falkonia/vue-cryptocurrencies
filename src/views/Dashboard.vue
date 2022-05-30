@@ -62,11 +62,3 @@ export default {
   }
 };
 </script>
-<style>
-.column-box {
-  padding: 16px;
-}
-.dashboard-container{
-  min-height: 100%;
-}
-</style>

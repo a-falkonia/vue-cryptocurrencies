@@ -112,9 +112,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.chart-container {
-  margin-top: -30px;
-  height: 560px;
-}
-</style>

@@ -107,93 +107,29 @@ body {
   color: #37434d !important;
   background-color: transparent;
 }
-.navigation-clean .navbar-nav > li > .dropdown-menu {
-  margin-top: -5px;
-  box-shadow: none;
-  background-color: #fff;
-  border-radius: 2px;
+.portfolio-input {
+    width: 30%;
+    margin-right: 5px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+    padding-left: 10px;
 }
-.navigation-clean .dropdown-menu .dropdown-item,
-.navigation-clean .dropdown-menu .dropdown-item:focus {
-  line-height: 2;
-  color: #37434d;
+.converter-input {
+  width: 70%;
+  margin-right: 5px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #CCC;
+  padding-left: 10px;
 }
-.navigation-clean .dropdown-menu .dropdown-item:focus,
-.navigation-clean .dropdown-menu .dropdown-item:hover {
-  background: #eee;
-  color: inherit;
+.chart-container {
+  margin-top: -30px;
+  height: 560px;
 }
-.team-boxed {
-  color: #313437;
-  background-color: #eef4f7;
+.column-box {
+  padding: 16px;
 }
-.team-boxed h2 {
-  font-weight: 700;
-  margin-bottom: 40px;
-  padding-top: 40px;
-  color: inherit;
-}
-@media (max-width: 767px) {
-  .highlight-phone {
-    text-align: center;
-  }
-  .highlight-phone .intro {
-    max-width: none;
-  }
-  .team-boxed h2 {
-    margin-bottom: 25px;
-    padding-top: 25px;
-    font-size: 24px;
-  }
-}
-.team-boxed .intro {
-  font-size: 16px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-.team-boxed .intro p {
-  margin-bottom: 0;
-}
-.team-boxed .people {
-  padding: 50px 0;
-}
-.team-boxed .item {
-  text-align: center;
-}
-.team-boxed .item .box {
-  text-align: center;
-  padding: 30px;
-  background-color: #fff;
-  margin-bottom: 30px;
-}
-.team-boxed .item .name {
-  font-weight: 700;
-  margin-top: 28px;
-  margin-bottom: 8px;
-  color: inherit;
-}
-.team-boxed .item .title {
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #d0d0d0;
-  letter-spacing: 2px;
-  font-size: 13px;
-}
-.team-boxed .item .description {
-  font-size: 15px;
-  margin-top: 15px;
-  margin-bottom: 20px;
-}
-.team-boxed .item img {
-  max-width: 160px;
-}
-.team-boxed .social {
-  font-size: 18px;
-  color: #a2a8ae;
-}
-.team-boxed .social a {
-  color: inherit;
-  margin: 0 10px;
-  display: inline-block;
-  opacity: 0.7;
+.dashboard-container{
+  min-height: 100%;
 }

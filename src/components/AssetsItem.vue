@@ -15,13 +15,3 @@ export default {
     }
 }
 </script>
-<style scoped>
-.portfolio-input {
-    width: 30%;
-    margin-right: 5px;
-    height: 40px;
-    border-radius: 5px;
-    border: 1px solid #CCC;
-    padding-left: 10px;
-}
-</style>
