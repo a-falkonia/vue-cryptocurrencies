@@ -1,6 +1,13 @@
-# crypto-spa
+## Cryptocurrency Converter & Portfolio
+A simple Cryptocurrency Converter and Portfolio
 
-## Project setup
+### Built With
+
+* [Vue.js](https://vuejs.org/)
+* [Bootstrap](https://getbootstrap.com)
+
+## Getting Started
+### Project setup
 ```
 npm install
 ```
@@ -15,5 +22,10 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Contact
+
+Anna Sokolova - [@a_falkonia](https://t.me/a_falkonia) - a.falkonia@gmail.com
+
+Project Link: [https://github.com/a-falkonia/vue-cryptocurrencies](https://github.com/a-falkonia/vue-cryptocurrencies)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
